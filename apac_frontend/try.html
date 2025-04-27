@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Try APAC</title>
+  <style>
+    body {
+      background: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    select, button {
+      padding: 10px;
+      margin: 20px;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Try APAC - Choose Input Method</h1>
+  <p>Select your input type:</p>
+
+  <select id="inputOptions">
+    <option value="">-- Select an option --</option>
+    <option value="upload-image">Upload Image</option>
+    <option value="enter-text">Enter Text</option>
+    <option value="live-webcam">Live Webcam</option>
+  </select>
+
+  <br>
+
+  <button onclick="redirectToApp()">Proceed ↗</button>
+
+  <script>
+    function redirectToApp() {
+      var selectedOption = document.getElementById("inputOptions").value;
+
+      if (selectedOption === "upload-image") {
+        window.location.href = "https://your-upload-image-app.streamlit.app";  // Replace with your deployed link
+      } 
+      else if (selectedOption === "enter-text") {
+        window.location.href = "https://your-enter-text-app.streamlit.app";  // Replace with your deployed link
+      } 
+      else if (selectedOption === "live-webcam") {
+        window.location.href = "https://your-live-webcam-app.streamlit.app";  // Replace with your deployed link
+      }
+      else {
+        alert("Please select an option.");
+      }
+    }
+  </script>
+
+</body>
+</html>
+

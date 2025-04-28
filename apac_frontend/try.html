@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Try APAC</title>
+  <title>Redirecting to APAC App...</title>
   <style>
     body {
       background: #000;
@@ -11,46 +11,17 @@
       text-align: center;
       padding: 50px;
     }
-    select, button {
-      padding: 10px;
-      margin: 20px;
-      border-radius: 10px;
-      font-size: 16px;
-    }
   </style>
 </head>
 <body>
-  <h1>Try APAC - Choose Input Method</h1>
-  <p>Select your input type:</p>
-
-  <select id="inputOptions">
-    <option value="">-- Select an option --</option>
-    <option value="upload-image">Upload Image</option>
-    <option value="enter-text">Enter Text</option>
-    <option value="live-webcam">Live Webcam</option>
-  </select>
-
-  <br>
-
-  <button onclick="redirectToApp()">Proceed ↗</button>
+  <h1>Redirecting you to APAC...</h1>
+  <p>Please wait a moment.</p>
 
   <script>
-    function redirectToApp() {
-      var selectedOption = document.getElementById("inputOptions").value;
-
-      if (selectedOption === "upload-image") {
-        window.location.href = "https://your-upload-image-app.streamlit.app";  // Replace with your deployed link
-      } 
-      else if (selectedOption === "enter-text") {
-        window.location.href = "https://your-enter-text-app.streamlit.app";  // Replace with your deployed link
-      } 
-      else if (selectedOption === "live-webcam") {
-        window.location.href = "https://your-live-webcam-app.streamlit.app";  // Replace with your deployed link
-      }
-      else {
-        alert("Please select an option.");
-      }
-    }
+    // Automatically redirect after short delay
+    setTimeout(function() {
+      window.location.href = "https://apaweb.streamlit.app/"; // Replace with your actual URL
+    }, 2000); // 2-second delay before redirect
   </script>
 
 </body>

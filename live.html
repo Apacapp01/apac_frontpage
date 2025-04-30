@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>APAC – Live Webcam</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    video {
+      width: 400px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Enable Camera for APAC</h1>
+  <video id="video" autoplay playsinline></video>
+  <br>
+  <button onclick="captureAndSend()">Send Frame to Backend</button>
+
+  <script>
+    // ✅ Ask for webcam permission and show live feed
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        document.getElementById('video').srcObject = stream;
+      })
+      .catch(function (error) {
+        alert("Webcam access denied or not available.");
+        console.error("Webcam error:", error);
+      });
+
+    // ✅ Capture image and send to backend (optional)
+    function captureAndSend() {
+      const video = document.getElementById("video");
+      const canvas = document.createElement("canvas");
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL("image/png");
+
+      // Send to your backend (update this URL later)
+      fetch("https://your-backend-api-url/upload", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ image: imageData })
+      }).then(response => {
+        if (response.ok) {
+          alert("Image sent successfully!");
+        } else {
+          alert("Failed to send image.");
+        }
+      }).catch(err => {
+        alert("Backend connection error.");
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>
